@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>洋菓子カフェ「Miel」</title>
+  <style>
+    /* ===========================
+       RESET & BASE
+    ============================ */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Arimo', 'Inter', 'Helvetica Neue', sans-serif;
+      background-color: #fff;
+      color: #222;
+      overflow-x: hidden;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      text-align: center;
+      margin: 60px 0 20px;
+      letter-spacing: 0.05em;
+    }
+    p.subtitle {
+      text-align: center;
+      color: #777;
+      margin-bottom: 60px;
+      font-size: 1.1rem;
+    }
+
+    /* ===========================
+       GALLERY SECTION
+    ============================ */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .gallery img {
+      object-fit: cover;
+      height: 250px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .gallery img:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+    }
+
+    /* ===========================
+       PRICE SECTION
+    ============================ */
+    .prices {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin: 50px 0 100px;
+    }
+    .price-pill {
+      background-color: #f8f8f8;
+      color: #d4af37;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: background 0.3s;
+    }
+    .price-pill:hover {
+      background-color: #f1f1f1;
+    }
+
+    /* ===========================
+       FOOTER
+    ============================ */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      gap: 10px;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+    footer button, footer a {
+      border: none;
+      outline: none;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      border-radius: 50px;
+      padding: 8px 14px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    footer button:hover, footer a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* Canva Gradient Animation */
+    footer a.canva {
+      position: relative;
+      background: linear-gradient(90deg, #00C4CC, #7D2AE8);
+      color: #fff;
+      overflow: hidden;
+    }
+    footer a.canva::before {
+      content: "";
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+      animation: shine 3s infinite linear;
+    }
+    @keyframes shine {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    /* ===========================
+       MODAL
+    ============================ */
+    .modal-backdrop {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+    .modal {
+      background: #fff;
+      border-radius: 8px;
+      padding: 24px;
+      max-width: 400px;
+      text-align: left;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      animation: fadeIn 0.4s ease;
+    }
+    .modal h2 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+    .modal p {
+      color: #333;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+    .modal .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+    .modal button {
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #f5f5f5;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.8rem; margin-top: 40px; }
+      .gallery img { height: 180px; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>洋菓子カフェ「Miel」</h1>
+  <p class="subtitle">高級感のあるメニューと美しいスイーツのビジュアルを再現</p>
+
+  <section class="gallery">
+    <img src="_assets/media/00593be22a4dfcb74e35ccb629464cee.jpg" alt="ケーキ1">
+    <img src="_assets/media/739a23ecadadd4d56f38e0eb5b9a9971.jpg" alt="ケーキ2">
+    <img src="_assets/media/cfac114d4c9a47e65461f611761725c7.jpg" alt="ケーキ3">
+    <img src="_assets/media/dba4327b53c5c5aefb3a8f10d8565fb0.jpg" alt="ケーキ4">
+    <img src="_assets/media/5059ec287905f6ac92d214bccc29213b.jpg" alt="ケーキ5">
+    <img src="_assets/media/2bb489cbc379b8aa5dbbb1856986baff.jpg" alt="ケーキ6">
+  </section>
+
+  <div class="prices">
+    <span class="price-pill">￥5,400</span>
+    <span class="price-pill">￥6,500</span>
+    <span class="price-pill">￥8,900</span>
+    <span class="price-pill">￥12,600</span>
+  </div>
+
+  <footer>
+    <button id="btnTerms">規約とサポート</button>
+    <button id="btnPrivacy">プライバシーポリシー</button>
+    <a href="https://www.canva.com/" target="_blank" class="canva">Canvaを使用してデザイン</a>
+  </footer>
+
+  <!-- モーダル -->
+  <div id="modalBackdrop" class="modal-backdrop">
+    <div class="modal" id="termsModal">
+      <h2>規約とサポート</h2>
+      <p>このWebサイトはCanvaを使用して作成されています。<br>
+      詳細はCanvaの利用規約をご確認ください。</p>
+      <div class="actions">
+        <button id="btnClose1">閉じる</button>
+        <button id="btnReport">報告する</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="privacyModal" class="modal-backdrop">
+    <div class="modal">
+      <h2>プライバシーポリシー</h2>
+      <p>このWebサイトに入力された個人情報は、作成者自身の管理方針に従って取り扱われます。<br>
+      Canvaの個人データに関しては、<a href="https://www.canva.com/policies/privacy-policy/" target="_blank">こちら</a>をご確認ください。</p>
+      <div class="actions">
+        <button id="btnClose2">閉じる</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const termsModal = document.getElementById('modalBackdrop');
+    const privacyModal = document.getElementById('privacyModal');
+    document.getElementById('btnTerms').onclick = () => termsModal.style.display = 'flex';
+    document.getElementById('btnPrivacy').onclick = () => privacyModal.style.display = 'flex';
+    document.getElementById('btnClose1').onclick = () => termsModal.style.display = 'none';
+    document.getElementById('btnClose2').onclick = () => privacyModal.style.display = 'none';
+    document.getElementById('btnReport').onclick = () => {
+      const reportUrl = 'https://www.canva.com/help/report-content/?source=design&link=' + encodeURIComponent(location.href);
+      window.open(reportUrl, '_blank');
+    };
+    window.addEventListener('click', e => {
+      if (e.target === termsModal) termsModal.style.display = 'none';
+      if (e.target === privacyModal) privacyModal.style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>
