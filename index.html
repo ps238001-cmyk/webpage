@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miel | とろけるような甘さを</title>
+
+  <!-- 🌸 Canva風フォント -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Serif JP', serif;
+      background: linear-gradient(135deg, #f9f9f9, #e8e6e3, #fdfcfb);
+      color: #333;
+      line-height: 1.8;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: linear-gradient(to bottom, #fff, #f6f6f6);
+      border-bottom: 1px solid #e0dfdc;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo h1 {
+      color: #caa847;
+      font-size: 24px;
+    }
+
+    .logo p {
+      font-size: 12px;
+      color: #999;
+      margin-top: 2px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #444;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #caa847;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 120px 20px;
+      background: linear-gradient(135deg, #f5f5f5, #e9e7e5);
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      letter-spacing: 1px;
+      color: #222;
+    }
+
+    .hero p {
+      margin-top: 10px;
+      color: #666;
+    }
+
+    /* About */
+    #about {
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    #about h2 {
+      color: #caa847;
+      font-size: 28px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    #about h2::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 1px;
+      background: #caa847;
+      margin: 10px auto;
+    }
+
+    #about p {
+      color: #555;
+      font-size: 15px;
+    }
+
+    /* Menu */
+    #menu {
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    #menu h2 {
+      color: #caa847;
+      font-size: 28px;
+      margin-bottom: 50px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .menu-item {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding-bottom: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .menu-item img {
+      width: 100%;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .menu-item h3 {
+      color: #caa847;
+      margin-top: 15px;
+    }
+
+    .menu-item p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .menu-item span {
+      display: block;
+      margin-top: 5px;
+      color: #caa847;
+      font-weight: bold;
+    }
+
+    /* Access */
+    #access {
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #f0efee, #dedddc);
+    }
+
+    #access h2 {
+      color: #caa847;
+      font-size: 28px;
+      margin-bottom: 50px;
+    }
+
+    .access-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .access-card {
+      background: linear-gradient(135deg, #fff, #d9d9d9);
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 25px;
+    }
+
+    .access-card h3 {
+      color: #caa847;
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 50px 20px;
+      background: linear-gradient(135deg, #fdfdfd, #f1f0ed);
+      border-top: 1px solid #e3e2e0;
+    }
+
+    .reserve-btn {
+      background: linear-gradient(to right, #e8d183, #caa847);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 28px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .reserve-btn:hover {
+      opacity: 0.8;
+    }
+
+    footer p {
+      margin-top: 20px;
+      color: #999;
+      font-size: 14px;
+    }
+
+    /* Fade Animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1.2s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <h1>Miel</h1>
+      <p>とろけるような甘さを</p>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#access">Access</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero fade-in">
+    <h2>Welcome to Miel</h2>
+    <p>とろけるような甘さと、上質なひとときを</p>
+  </section>
+
+  <section id="about" class="fade-in">
+    <h2>About Miel</h2>
+    <p>
+      Mielは、フランス語で「蜂蜜」を意味します。<br>
+      黒を基調とした洗練された空間に、大理石の床が高級感を演出。<br>
+      とろけるような甘さのフランス菓子と、心地よいひとときをお届けします。<br>
+      20代女性の皆様に愛される、甘くかわいい特別な場所です。
+    </p>
+  </section>
+
+  <section id="menu" class="fade-in">
+    <h2>Our Menu</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="images/cake1.jpg" alt="苺のショートケーキ">
+        <h3>苺のショートケーキ</h3>
+        <p>ふわふわのスポンジに新鮮な苺と生クリーム</p>
+        <span>¥1,280</span>
+      </div>
+      <div class="menu-item">
+        <img src="images/cake2.jpg" alt="ハニーチーズケーキ">
+        <h3>ハニーチーズケーキ</h3>
+        <p>濃厚なチーズと蜂蜜の絶妙なハーモニー</p>
+        <span>¥1,450</span>
+      </div>
+      <div class="menu-item">
+        <img src="images/cake3.jpg" alt="ミルフィーユ">
+        <h3>ミルフィーユ</h3>
+        <p>サクサクのパイ生地と滑らかなクリーム</p>
+        <span>¥1,350</span>
+      </div>
+      <div class="menu-item">
+        <img src="images/cake4.jpg" alt="マカロン">
+        <h3>マカロン</h3>
+        <p>色とりどりの可愛らしいフランス菓子</p>
+        <span>¥1,180</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="access" class="fade-in">
+    <h2>Access</h2>
+    <div class="access-grid">
+      <div class="access-card">
+        <h3>住所</h3>
+        <p>東京都渋谷区デントラ地区<br>ククルーマウンテン樹海</p>
+      </div>
+      <div class="access-card">
+        <h3>営業時間</h3>
+        <p>11:00 - 20:00<br>定休日：火曜日</p>
+      </div>
+      <div class="access-card">
+        <h3>アクセス</h3>
+        <p>やさなら駅より徒歩3時間</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <button class="reserve-btn">🍰 ご予約はこちら</button>
+    <p>© 2024 Cafe Miel. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // スクロール時にフェードイン
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const fadeInOnScroll = () => {
+      fadeElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          el.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', fadeInOnScroll);
+    window.addEventListener('load', fadeInOnScroll);
+  </script>
+</body>
+</html>
